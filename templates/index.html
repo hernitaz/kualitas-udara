@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Kualitas Udara di DKI JAKARTA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            margin-top: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-in-out;
+        }
+        h2 {
+            color: #4e54c8;
+            font-weight: 600;
+        }
+        label {
+            font-weight: 600;
+        }
+        .btn-custom {
+            background-color: #4e54c8;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #3c43a4;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="form-container col-md-6">
+            <h2 class="text-center mb-4">Prediksi Kualitas Udara di DKI Jakarta</h2>
+            <form action="/predict" method="POST">
+                <div class="form-group">
+                    <label for="pm10">Indeks Standar PM10:</label>
+                    <input type="text" class="form-control" id="pm10" name="pm10" placeholder="Contoh: 50" required>
+                </div>
+                <div class="form-group">
+                    <label for="so2">Indeks Standar Sulfur Dioksida (SO2):</label>
+                    <input type="text" class="form-control" id="so2" name="so2" placeholder="Contoh: 20" required>
+                </div>
+                <div class="form-group">
+                    <label for="co">Indeks Standar Karbon Monoksida (CO):</label>
+                    <input type="text" class="form-control" id="co" name="co" placeholder="Contoh: 10" required>
+                </div>
+                <div class="form-group">
+                    <label for="o3">Indeks Standar Ozon (O3):</label>
+                    <input type="text" class="form-control" id="o3" name="o3" placeholder="Contoh: 15" required>
+                </div>
+                <div class="form-group">
+                    <label for="no2">Indeks Standar Nitrogen Dioksida (NO2):</label>
+                    <input type="text" class="form-control" id="no2" name="no2" placeholder="Contoh: 25" required>
+                </div>
+                <button type="submit" class="btn btn-custom btn-block">Prediksi</button>
+            </form>
+
+            {% if prediction_text %}
+                <h3 class="text-center mt-4">{{ prediction_text }}</h3>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
